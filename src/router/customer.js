@@ -38,7 +38,7 @@ router.post("/customers", async (req, res) => {
 /**
  * List of All customers
  */
-router.get("/customers", async (req, res) => {
+router.get("/all-customers", async (req, res) => {
   try {
     const customers = await CUSTOMERS.filter((customer) => customer);
     console.log("ccc", customers);
@@ -51,7 +51,7 @@ router.get("/customers", async (req, res) => {
 /**
  * List of Active customers
  */
-router.get("/active-customers", async (req, res) => {
+router.get("/customers", async (req, res) => {
   try {
     const customers = await CUSTOMERS.filter((customer) => customer.is_active);
     console.log("ccc", customers);

@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const uuidGenerator = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,
@@ -6,11 +8,24 @@ const uuidGenerator = () => {
   });
 };
 
-const { CUSTOMERS } = require("../db");
+const CUSTOMERS = require("../db/customer.json");
 
 const customer = CUSTOMERS.filter((customer) => {
   console.log(customer.is_active);
   return customer.id === 2 && customer.is_active;
 });
-console.log(customer);
-module.exports = uuidGenerator;
+
+function writeJSONFile(path, content) {
+  try {
+    fs.writeFileSync(
+      __dirname + `/../${path}`,
+      JSON.stringify(content, null, 4),
+      "utf8"
+    );
+    return 201;
+  } catch (err) {
+    return err;
+  }
+}
+
+module.exports = { uuidGenerator, writeJSONFile };

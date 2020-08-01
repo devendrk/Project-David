@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "uuid": "d13ff356-f588-4792-ae5c-a00b4b014041",
+    "name": "Delhi hospital",
+    "is_active": true
+  },
+  {
+    "id": 2,
+    "uuid": "82d438f7-6054-4fc7-b908-39a81b223c39",
+    "name": "Finland branch",
+    "is_active": false
+  },
+  {
+    "id": 3,
+    "name": "james",
+    "first_name": "wasiq muhammad",
+    "last_name": "muhammad"
+  },
+  {
+    "id": 4,
+    "name": "wasiq",
+    "first_name": "wasiq muhammad",
+    "last_name": "muhammad"
+  }
+]

@@ -1,0 +1,88 @@
+[
+    {
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "id": 1,
+        "uuid": "d13ff356-f588-4792-ae5c-a00b4b014076",
+        "first_name": "Delhi hospital",
+        "last_name": "lastname 1",
+        "role": "employee",
+        "is_deleted": true
+    },
+    {
+        " customer_id": "82d438f7-6054-4fc7-b908-39a81b223c39",
+        "id": 2,
+        "uuid": "82d438f7-6054-4fc7-b908-39a81b223g69",
+        "first_name": "Finland branch",
+        "last_name": "lldksjaflk",
+        "role": "manager",
+        "is_deleted": false
+    },
+    {
+        "customer_id": "75a23677-0ff2-4406-98d5-f6dd47cd915c",
+        "id": 3,
+        "uuid": "75a23677-0ff2-4406-98d5-f6dd47cd786c",
+        "first_name": "Austria branch",
+        "last_name": "kdsjfkld",
+        "role": "employee",
+        "is_deleted": true
+    },
+    {
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "id": 4,
+        "uuid": "a5da9074-682d-4d2f-b4af-df9a12504761",
+        "first_name": "aksdfkafjd nmame",
+        "last_name": "ddddddddddddddddveve",
+        "role": "nothing",
+        "is_deleted": true
+    },
+    {
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "id": 5,
+        "uuid": "fca95799-d160-4b84-bdd5-29a39d7938b5",
+        "last_name": "deverrr",
+        "role": "nothing",
+        "is_deleted": false
+    },
+    {
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "id": 7,
+        "uuid": "6a66861d-7acd-4260-b0e6-476c9205b7e9",
+        "last_name": "deverrr",
+        "role": "nothing",
+        "is_deleted": false
+    },
+    {
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "id": 8,
+        "uuid": "7e1019c4-77e4-4486-ad0b-c2c329b4e9e2",
+        "last_name": "deverrr",
+        "role": "nothing",
+        "is_deleted": false
+    },
+    {
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "id": 9,
+        "uuid": "deb2ed17-17b0-4f17-bceb-58c10c181768",
+        "last_name": "deverrr",
+        "role": "nothing",
+        "is_deleted": false
+    },
+    {
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "id": 10,
+        "uuid": "34d62259-6c11-4cf6-8d3c-8905224c7246",
+        "first_name": "lll nmame",
+        "last_name": "deverrr",
+        "role": "nothing",
+        "is_deleted": false
+    },
+    {
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "first_name": "lll nmame",
+        "last_name": "deverrr",
+        "role": "nothing",
+        "is_deleted": false,
+        "id": 11,
+        "uuid": "431022ec-d3cc-42a0-b386-85bf909af724"
+    }
+]
