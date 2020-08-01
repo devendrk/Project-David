@@ -8,13 +8,6 @@ const uuidGenerator = () => {
   });
 };
 
-const CUSTOMERS = require("../db/customer.json");
-
-const customer = CUSTOMERS.filter((customer) => {
-  console.log(customer.is_active);
-  return customer.id === 2 && customer.is_active;
-});
-
 function writeJSONFile(path, content) {
   try {
     fs.writeFileSync(

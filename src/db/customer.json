@@ -12,10 +12,10 @@
     "is_active": false
   },
   {
+    "uuid": "82d438f7-6054-4fc7-b908-39a81b223c39",
     "id": 3,
-    "name": "james",
-    "first_name": "wasiq muhammad",
-    "last_name": "muhammad"
+    "name": "Finland branch",
+    "is_active": false
   },
   {
     "id": 4,

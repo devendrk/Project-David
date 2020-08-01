@@ -4,7 +4,7 @@ const filename = __dirname + "/../db/person.json";
 
 const validate = require("../validation/index");
 
-const { uuidGenerator, writeJSONFile } = require("../utils/index");
+const { uuidGenerator, writeJSONFile } = require("../utils/helper");
 // const { PERSONS } = require("../db");
 const fs = require("fs");
 
