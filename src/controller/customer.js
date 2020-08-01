@@ -70,7 +70,7 @@ router.get("/customers/:id", async (req, res) => {
     const customer = CUSTOMERS.filter(
       (customer) => customer.id === id && customer.is_active
     );
-    console.log("cu length", customer.length);
+    console.log("cu length", customer.gth);
     if (customer.length === 0) {
       return res.status(404).send({ error: "Customer does not exist" });
     }

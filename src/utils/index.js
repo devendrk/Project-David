@@ -8,6 +8,14 @@ const uuidGenerator = () => {
   });
 };
 
+const getNewId = (array) => {
+  if (array.length > 0) {
+    return array[array.length - 1].id + 1;
+  } else {
+    return 1;
+  }
+};
+
 function writeJSONFile(path, content) {
   try {
     fs.writeFileSync(
@@ -21,4 +29,4 @@ function writeJSONFile(path, content) {
   }
 }
 
-module.exports = { uuidGenerator, writeJSONFile };
+module.exports = { getNewId, uuidGenerator, writeJSONFile };
