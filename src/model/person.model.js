@@ -33,7 +33,7 @@ function insertPerson(newPerson) {
   return new Promise((resolve, reject) => {
     const id = { id: helper.getNewId(PERSON) };
     newPerson = { ...id, ...newPerson };
-    PERSON.concat(newPerson);
+    PERSON.push(newPerson);
     helper.writeJSONFile(filename, PERSON);
     resolve(newPerson);
   });
@@ -41,17 +41,19 @@ function insertPerson(newPerson) {
 
 function updatePerson(id, newCustomer) {
   return new Promise((resolve, reject) => {
-    helper
-      .mustBeInArray(customer, id)
-      .then((c) => {
-        const index = customer.findIndex((p) => p.id == c.id);
-        id = { id: c.id };
-        customer[index] = { ...id, ...newCustomer };
-        helper.writeJSONFile(filename, customer);
-        resolve(customer[index]);
-      })
-      .catch((err) => reject(err));
-  });
+     const id = Number(req.params.id);
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ["first_name", "last_name", "role", "is_deleted"];
+  const isValidUpdates = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
+  console.log("uuuu", id, updates, allowedUpdates);
+  try {
+    if (!isValidUpdates) {
+      res.status(400).send({ error: "not a valid operation" });
+
+  }
+  );
 }
 
 function deletePerson(id) {
@@ -61,18 +63,21 @@ function deletePerson(id) {
      * after certain interval of time
      *
      */
-    console.log("iiiiiiiiiiii...", id, PERSON);
+    console.log("iiiiiiiiiiii...", id);
     // if (!id) {
     //   reject({
     //     message: "no Persons available",
     //     status: 202,
     //   });
     // }
-    PERSON.map((p) =>
-      console.log("p", p) || p.id === id ? { ...p, is_deleted: false } : person
+    const persons = PERSON.map((person) =>
+      console.log(typeof person.id, typeof id, "personId") || id === person.id
+        ? { ...person, is_deleted: true }
+        : person
     );
-    console.log("after delete");
-    // helper.writeJSONFile(filename, persons);
+
+    console.log("after delete", persons);
+    helper.writeJSONFile(filename, persons);
     resolve();
   });
 }

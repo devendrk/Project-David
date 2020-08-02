@@ -47,6 +47,35 @@ router.get("/persons/:id", async (req, res) => {
     });
 });
 
+/* Update a post */
+router.put("/:id", async (req, res) => {
+  const id = req.params.id;
+  const id = Number(req.params.id);
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ["first_name", "last_name", "role", "is_deleted"];
+  const isValidUpdates = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
+
+  if (!isValidUpdates) {
+    res.status(400).send({ error: "not a valid operation" });
+  }
+  await person
+    .updatePerson(id, req.body)
+    .then((person) =>
+      res.json({
+        message: `The person #${id} has been updated`,
+        content: person,
+      })
+    )
+    .catch((err) => {
+      if (err.status) {
+        res.status(err.status).json({ message: err.message });
+      }
+      res.status(500).json({ message: err.message });
+    });
+});
+
 /* Delete a person */
 router.delete("/persons/:id", async (req, res) => {
   const id = Number(req.params.id);
