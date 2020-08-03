@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const person = require("../model/person.model");
-const m = require("../middleWare");
 
 /* Insert a new customer */
 router.post("/persons", async (req, res) => {
@@ -20,6 +19,7 @@ router.post("/persons", async (req, res) => {
 /* All persons */
 router.get("/:customerId/persons", async (req, res) => {
   const { customerId } = req.params;
+  console.log("persons", req.params);
   await person
     .getPersons(customerId)
     .then((person) => res.json(person))

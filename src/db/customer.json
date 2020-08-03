@@ -1,26 +1,20 @@
 [
-  {
-    "id": 1,
-    "uuid": "d13ff356-f588-4792-ae5c-a00b4b014041",
-    "name": "Delhi hospital",
-    "is_active": true
-  },
-  {
-    "id": 2,
-    "uuid": "82d438f7-6054-4fc7-b908-39a81b223c39",
-    "name": "Finland branch",
-    "is_active": false
-  },
-  {
-    "uuid": "82d438f7-6054-4fc7-b908-39a81b223c39",
-    "id": 3,
-    "name": "Finland branch",
-    "is_active": false
-  },
-  {
-    "id": 4,
-    "name": "wasiq",
-    "first_name": "wasiq muhammad",
-    "last_name": "muhammad"
-  }
+    {
+        "id": 1,
+        "uuid": "9bf44813-faf1-40d9-b377-17acd8f48dd0",
+        "name": "test update 111",
+        "is_active": false
+    },
+    {
+        "id": 3,
+        "uuid": "00e69238-6236-4ed6-9c92-0b24e9c669b5",
+        "name": "test update 3",
+        "is_active": false
+    },
+    {
+        "id": 4,
+        "uuid": "c3f34f78-5cf4-45d4-b573-b9bf23f969e0",
+        "name": "test update 444",
+        "is_active": false
+    }
 ]

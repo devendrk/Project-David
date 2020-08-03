@@ -28,11 +28,24 @@ function getPerson(id) {
   });
 }
 
-function insertPerson(newPerson) {
-  console.log("new person", newPerson);
+function insertPerson(body) {
+  const { first_name, last_name, customer_id, role } = body;
   return new Promise((resolve, reject) => {
+    if (!(first_name || last_name || customer_id, role)) {
+      reject({
+        message: "Required field missing",
+        status: 400,
+      });
+    }
     const id = { id: helper.getNewId(PERSON) };
-    newPerson = { ...id, ...newPerson };
+    const newPerson = {
+      ...id,
+      customer_id,
+      first_name: first_name,
+      last_name,
+      role,
+      is_deleted: false,
+    };
     PERSON.push(newPerson);
     helper.writeJSONFile(filename, PERSON);
     resolve(newPerson);
@@ -53,13 +66,14 @@ function updatePerson(id, newPerson) {
         status: 400,
       });
     }
-
-    const index = PERSON.findIndex((p) => p.id == newPerson.id);
-    id = { id: newPerson.id };
-    PERSON[index] = { ...id, ...newPerson };
-    console.log("index", index);
+    // const index = PERSON.findIndex((p) => p.id == newPerson.id);
+    // id = { id: newPerson.id };
+    // PERSON[index] = { ...id, ...newPerson };
+    // console.log("index", index);
+    const [person] = PERSON.filter((p) => id === p.id);
+    updates.forEach((update) => (person[update] = newPerson[update]));
     helper.writeJSONFile(filename, PERSON);
-    resolve(PERSON[index]);
+    resolve(person);
   });
 }
 
@@ -70,25 +84,14 @@ function deletePerson(id) {
      * after certain interval of time
      *
      */
-    console.log("iiiiiiiiiiii...", id);
-    // if (!id) {
-    //   reject({
-    //     message: "no Persons available",
-    //     status: 202,
-    //   });
-    // }
     const persons = PERSON.map((person) =>
-      console.log(typeof person.id, typeof id, "personId") || id === person.id
-        ? { ...person, is_deleted: true }
-        : person
+      id === person.id ? { ...person, is_deleted: true } : person
     );
-
     console.log("after delete", persons);
     helper.writeJSONFile(filename, persons);
     resolve();
   });
 }
-
 module.exports = {
   getPersons,
   getPerson,
