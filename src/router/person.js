@@ -149,7 +149,11 @@ router.put("/persons/:id", async (req, res) => {
 router.delete("/persons/:id", async (req, res) => {
   const id = Number(req.params.id);
   try {
+
     const persons = personsList.map((person) => {
+      if(!id){
+        res.status()
+      }
       return person.id === id ? { ...person, is_deleted: true } : person;
     });
     console.log("persons..............", persons);
