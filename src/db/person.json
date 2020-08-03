@@ -1,12 +1,26 @@
 [
-  {
-    "id": 6,
-    "customer_id": "82d438f7-6054-4fc7-b908-39a81b223c39",
-    "first_name": "update id 6",
-    "last_name": "lol mal",
-    "role": "CFO",
-    "is_deleted": true
-  },
-  null,
-  null
+    {
+        "id": 1,
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "first_name": "Nishan",
+        "last_name": "kadsfdkf",
+        "role": "Ckkk",
+        "is_deleted": false
+    },
+    {
+        "id": 2,
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "first_name": "chiran",
+        "last_name": "chaps",
+        "role": "CTO",
+        "is_deleted": false
+    },
+    {
+        "id": 3,
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "first_name": "Cool guy",
+        "last_name": "kdfj",
+        "role": "CFO",
+        "is_deleted": true
+    }
 ]

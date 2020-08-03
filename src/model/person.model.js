@@ -66,10 +66,7 @@ function updatePerson(id, newPerson) {
         status: 400,
       });
     }
-    // const index = PERSON.findIndex((p) => p.id == newPerson.id);
-    // id = { id: newPerson.id };
-    // PERSON[index] = { ...id, ...newPerson };
-    // console.log("index", index);
+
     const [person] = PERSON.filter((p) => id === p.id);
     updates.forEach((update) => (person[update] = newPerson[update]));
     helper.writeJSONFile(filename, PERSON);
