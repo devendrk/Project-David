@@ -51,7 +51,6 @@ router.get("/persons/:id", async (req, res) => {
 router.put("/persons/:id", async (req, res) => {
   const id = Number(req.params.id);
   const body = req.body;
-  console.log(id, body);
   await person
     .updatePerson(id, body)
     .then((person) =>
