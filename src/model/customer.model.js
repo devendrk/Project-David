@@ -1,4 +1,4 @@
-let CUSTOMER = require("../data/customer.json");
+let CUSTOMER = require("../db/customer.json");
 const helper = require("../utils");
 const filename = "db/customer.json";
 
@@ -27,7 +27,6 @@ function getCustomer(id) {
 
 function insertCustomer(body) {
   return new Promise((resolve, reject) => {
-    const id = { id: helper.getNewId(customer) };
     const id = { id: helper.getNewId(customer) };
     const is_active = false;
     console.log("new", newCustomer);
