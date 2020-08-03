@@ -1,4 +1,4 @@
-let CUSTOMER = require("../db/customer.json");
+let CUSTOMER = require("../data/customer.json");
 const helper = require("../utils");
 const filename = "db/customer.json";
 
@@ -16,72 +16,53 @@ function getCustomers() {
 
 function getCustomer(id) {
   return new Promise((resolve, reject) => {
-    const singleCustomer = CUSTOMER.find((c) => c.id == id);
-    if (!singleCustomer) {
-      reject({
-        message: "Id in not good",
-        status: 404,
-      });
-    }
-    resolve(singleCustomer);
+    return new Promise((resolve, reject) => {
+      helper
+        .mustBeInArray(customer, id)
+        .then((post) => resolve(post))
+        .catch((err) => reject(err));
+    });
   });
 }
 
 function insertCustomer(body) {
-  console.log("new person", body);
   return new Promise((resolve, reject) => {
-    const { name } = body;
-    if (!name) {
-      reject({
-        message: "not a valid operation",
-        status: 400,
-      });
-    }
-    const id = helper.getNewId(CUSTOMER);
-    const uuid = helper.uuidGenerator();
-    newCustomer = { id, uuid, name, is_active: true };
-    CUSTOMER.push(newCustomer);
-    helper.writeJSONFile(filename, CUSTOMER);
+    const id = { id: helper.getNewId(customer) };
+    const id = { id: helper.getNewId(customer) };
+    const is_active = false;
+    console.log("new", newCustomer);
+    newCustomer = { ...id, ...newCustomer, is_active };
+    customer.push(newCustomer);
+    helper.writeJSONFile(filename, customer);
     resolve(newCustomer);
   });
 }
 
 function updateCustomer(id, newCustomer) {
   return new Promise((resolve, reject) => {
-    const updates = Object.keys(newCustomer);
-    const allowedUpdates = ["name", "is_active"];
-    const isValidUpdates = updates.every((update) =>
-      allowedUpdates.includes(update)
-    );
-    if (!isValidUpdates) {
-      reject({
-        message: "not a valid operation",
-        status: 400,
-      });
-    }
-    const [person] = CUSTOMER.filter((c) => id === c.id);
-    updates.forEach((update) => (person[update] = newCustomer[update]));
-    helper.writeJSONFile(filename, CUSTOMER);
-    resolve(person);
+    helper
+      .mustBeInArray(customer, id)
+      .then((c) => {
+        const index = customer.findIndex((p) => p.id == c.id);
+        id = { id: c.id };
+        customer[index] = { ...id, ...newCustomer };
+        helper.writeJSONFile(filename, customer);
+        resolve(customer[index]);
+      })
+      .catch((err) => reject(err));
   });
 }
 
 function deleteCustomer(id) {
   return new Promise((resolve, reject) => {
-    /** Soft deletes the Customer with is_deleted:true flag,
-     * In production, deleted data can be removed by invoking a seperate delete fucntion
-     * after certain interval of time
-     *
-     */
-    const customers = CUSTOMER.map((customer) =>
-      console.log(typeof customer.id, typeof id, "customerId") ||
-      id === customer.id
-        ? { ...customer, is_deleted: true }
-        : customer
-    );
-    console.log("after delete", customers);
-    helper.writeJSONFile(filename, customers);
-    resolve();
+    helper
+      .mustBeInArray(customer, id)
+      .then(() => {
+        customers = customer.filter((p) => p.id !== id);
+        helper.writeJSONFile(filename, customers);
+        resolve();
+      })
+      .catch((err) => reject(err));
   });
 }
 
@@ -90,5 +71,5 @@ module.exports = {
   getCustomer,
   insertCustomer,
   updateCustomer,
-  //   deleteCustomer,
+  deleteCustomer,
 };

@@ -1,0 +1,12 @@
+[
+  {
+    "id": 6,
+    "customer_id": "82d438f7-6054-4fc7-b908-39a81b223c39",
+    "first_name": "update id 6",
+    "last_name": "lol mal",
+    "role": "CFO",
+    "is_deleted": true
+  },
+  null,
+  null
+]
