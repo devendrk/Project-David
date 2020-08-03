@@ -39,21 +39,28 @@ function insertPerson(newPerson) {
   });
 }
 
-function updatePerson(id, newCustomer) {
+function updatePerson(id, newPerson) {
   return new Promise((resolve, reject) => {
-     const id = Number(req.params.id);
-  const updates = Object.keys(req.body);
-  const allowedUpdates = ["first_name", "last_name", "role", "is_deleted"];
-  const isValidUpdates = updates.every((update) =>
-    allowedUpdates.includes(update)
-  );
-  console.log("uuuu", id, updates, allowedUpdates);
-  try {
+    const updates = Object.keys(newPerson);
+    console.log("modee", newPerson);
+    const allowedUpdates = ["first_name", "last_name", "role", "is_deleted"];
+    const isValidUpdates = updates.every((update) =>
+      allowedUpdates.includes(update)
+    );
     if (!isValidUpdates) {
-      res.status(400).send({ error: "not a valid operation" });
+      reject({
+        message: "not a valid operation",
+        status: 400,
+      });
+    }
 
-  }
-  );
+    const index = PERSON.findIndex((p) => p.id == newPerson.id);
+    id = { id: newPerson.id };
+    PERSON[index] = { ...id, ...newPerson };
+    console.log("index", index);
+    helper.writeJSONFile(filename, PERSON);
+    resolve(PERSON[index]);
+  });
 }
 
 function deletePerson(id) {

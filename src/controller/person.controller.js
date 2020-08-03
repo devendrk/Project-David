@@ -48,20 +48,12 @@ router.get("/persons/:id", async (req, res) => {
 });
 
 /* Update a post */
-router.put("/:id", async (req, res) => {
-  const id = req.params.id;
+router.put("/persons/:id", async (req, res) => {
   const id = Number(req.params.id);
-  const updates = Object.keys(req.body);
-  const allowedUpdates = ["first_name", "last_name", "role", "is_deleted"];
-  const isValidUpdates = updates.every((update) =>
-    allowedUpdates.includes(update)
-  );
-
-  if (!isValidUpdates) {
-    res.status(400).send({ error: "not a valid operation" });
-  }
+  const body = req.body;
+  console.log(id, body);
   await person
-    .updatePerson(id, req.body)
+    .updatePerson(id, body)
     .then((person) =>
       res.json({
         message: `The person #${id} has been updated`,

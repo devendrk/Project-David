@@ -18,9 +18,9 @@
     {
         "id": 3,
         "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
-        "first_name": "third",
-        "last_name": "thirdddd",
-        "role": "Ckkk",
-        "is_deleted": false
+        "first_name": "Cool guy",
+        "last_name": "kdfj",
+        "role": "CFO",
+        "is_deleted": true
     }
 ]
