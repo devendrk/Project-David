@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const uuidGenerator = require("../utils/index");
-const { CUSTOMERS } = require("../db");
+const CUSTOMERS = require("../db/customer.json");
 
 const idGenerator = () => {
   const maxId =
