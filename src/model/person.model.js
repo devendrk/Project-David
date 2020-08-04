@@ -5,7 +5,6 @@ const filename = "db/person.json";
 
 function isValidCustomer(customerId) {
   const customer = CUSTOMER.find((c) => Number(customerId) == c.id);
-  console.log("customer....", customer, customerId);
   if (customer && customer.is_active) {
     return true;
   } else {
@@ -90,7 +89,6 @@ function updatePerson(customerId, id, newPerson) {
       });
     }
     const updates = Object.keys(newPerson);
-    console.log("modee", newPerson);
     const allowedUpdates = ["first_name", "last_name", "role", "is_deleted"];
     const isValidUpdates = updates.every((update) =>
       allowedUpdates.includes(update)

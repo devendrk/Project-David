@@ -27,8 +27,8 @@ Endpoints for viewing and manipulating customers
 
 endpoints for viewing and manipulating persons that is created by a customer.
 
-- Show persons: `GET /:customer-id/persons/`
-- Show single person : `GET /persons/:id`
-- create a person : `POST /persons/`
-- update a person : `PUT /persons/:id`
-- delete a person : `DELETE /persons/:id`
+- Show persons: `GET /customers/:customerId/persons`
+- Show single person : `GET /customers/:customerId/persons/:id`
+- create a person : `POST /customers/:customerId/persons/`
+- update a person : `PUT /customers/:customerId/persons/:id`
+- delete a person : `DELETE /customers/:customerId/persons/:id`
