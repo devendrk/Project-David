@@ -3,9 +3,11 @@ const router = express.Router();
 const person = require("../model/person.model");
 
 /* Insert a new customer */
-router.post("/persons", async (req, res) => {
+router.post("/customers/:customerId/persons", async (req, res) => {
+  const { customerId } = req.params;
+  const body = req.body;
   await person
-    .insertPerson(req.body)
+    .insertPerson(customerId, body)
     .then((person) =>
       res.status(201).json({
         message: `The person #${person.id} has been created`,
@@ -16,8 +18,9 @@ router.post("/persons", async (req, res) => {
 });
 
 /* All persons */
-router.get("/:customerId/persons", async (req, res) => {
+router.get("/customers/:customerId/persons", async (req, res) => {
   const { customerId } = req.params;
+  console.log("rrr..", customerId);
   await person
     .getPersons(customerId)
     .then((person) => res.json(person))
@@ -31,10 +34,12 @@ router.get("/:customerId/persons", async (req, res) => {
 });
 
 /* Person by id */
-router.get("/persons/:id", async (req, res) => {
+router.get("/customers/:customerId/persons/:id", async (req, res) => {
   const id = Number(req.params.id);
+  const { customerId } = req.params;
+
   await person
-    .getPerson(id)
+    .getPerson(customerId, id)
     .then((person) => res.json(person))
     .catch((err) => {
       if (err.status) {
@@ -46,12 +51,14 @@ router.get("/persons/:id", async (req, res) => {
 });
 
 /* Update a post */
-router.put("/persons/:id", async (req, res) => {
+router.put("/customers/:customerId/persons/:id", async (req, res) => {
   const id = Number(req.params.id);
+  const { customerId } = req.params;
+
   const body = req.body;
 
   await person
-    .updatePerson(id, body)
+    .updatePerson(customerId, id, body)
     .then((person) =>
       res.json({
         message: `The person #${id} has been updated`,
@@ -67,13 +74,14 @@ router.put("/persons/:id", async (req, res) => {
 });
 
 /* Delete a person */
-router.delete("/persons/:id", async (req, res) => {
+router.delete("/customers/:customerId/persons/:id", async (req, res) => {
+  const { customerId } = req.params;
   const id = Number(req.params.id);
   await person
-    .deletePerson(id)
+    .deletePerson(customerId, id)
     .then((p) =>
       res.json({
-        message: `The person #${id} has been deleted`,
+        message: `The person #${id} has been removed`,
       })
     )
     .catch((err) => {
