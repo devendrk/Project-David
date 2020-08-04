@@ -71,7 +71,7 @@ router.delete("/customers/:id", async (req, res) => {
     .deleteCustomer(id)
     .then((c) =>
       res.json({
-        message: `The Customer #${id} has been deleted`,
+        message: `The Customer #${id}  is set inactive`,
       })
     )
     .catch((err) => {

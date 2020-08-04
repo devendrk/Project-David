@@ -62,7 +62,7 @@ function updateCustomer(id, newCustomer) {
       });
     }
 
-    const [customer] = CUSTOMER.filter((p) => id === p.id);
+    const customer = CUSTOMER.find((p) => id === p.id);
     updates.forEach((update) => (customer[update] = newCustomer[update]));
     helper.writeJSONFile(filename, CUSTOMER);
     resolve(customer);
