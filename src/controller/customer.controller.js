@@ -67,22 +67,22 @@ router.put("/customers/:id", async (req, res) => {
     });
 });
 
-// /* Delete a person */
-// router.delete("/customers/:id", async (req, res) => {
-//   const id = Number(req.params.id);
-//   await person
-//     .deleteCustomer(id)
-//     .then((p) =>
-//       res.json({
-//         message: `The CUstomer #${id} has been deleted`,
-//       })
-//     )
-//     .catch((err) => {
-//       if (err.status) {
-//         res.status(err.status).json({ message: err.message });
-//       }
-//       res.status(500).json({ message: err.message });
-//     });
-// });
+/* Delete a Customer */
+router.delete("/customers/:id", async (req, res) => {
+  const id = Number(req.params.id);
+  await customer
+    .deleteCustomer(id)
+    .then((c) =>
+      res.json({
+        message: `The Customer #${id} has been deleted`,
+      })
+    )
+    .catch((err) => {
+      if (err.status) {
+        res.status(err.status).json({ message: err.message });
+      }
+      res.status(500).json({ message: err.message });
+    });
+});
 
 module.exports = router;

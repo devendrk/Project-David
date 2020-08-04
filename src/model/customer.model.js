@@ -16,52 +16,73 @@ function getCustomers() {
 
 function getCustomer(id) {
   return new Promise((resolve, reject) => {
-    return new Promise((resolve, reject) => {
-      helper
-        .mustBeInArray(customer, id)
-        .then((post) => resolve(post))
-        .catch((err) => reject(err));
-    });
+    const singleCustomer = CUSTOMER.find((p) => p.id == id);
+    if (!singleCustomer) {
+      reject({
+        message: "Id in not good",
+        status: 404,
+      });
+    }
+    resolve(singleCustomer);
   });
 }
 
 function insertCustomer(body) {
+  const { name, is_active } = body;
   return new Promise((resolve, reject) => {
-    const id = { id: helper.getNewId(customer) };
-    const is_active = false;
-    console.log("new", newCustomer);
-    newCustomer = { ...id, ...newCustomer, is_active };
-    customer.push(newCustomer);
-    helper.writeJSONFile(filename, customer);
+    if (!name) {
+      reject({
+        message: "Required field missing",
+        status: 400,
+      });
+    }
+    const newCustomer = {
+      id: helper.getNewId(CUSTOMER),
+      uuid: helper.uuidGenerator(),
+      name: name,
+      is_active: is_active || true,
+    };
+    CUSTOMER.push(newCustomer);
+    helper.writeJSONFile(filename, CUSTOMER);
     resolve(newCustomer);
   });
 }
 
 function updateCustomer(id, newCustomer) {
   return new Promise((resolve, reject) => {
-    helper
-      .mustBeInArray(customer, id)
-      .then((c) => {
-        const index = customer.findIndex((p) => p.id == c.id);
-        id = { id: c.id };
-        customer[index] = { ...id, ...newCustomer };
-        helper.writeJSONFile(filename, customer);
-        resolve(customer[index]);
-      })
-      .catch((err) => reject(err));
+    const updates = Object.keys(newCustomer);
+    console.log("modee", newCustomer);
+    const allowedUpdates = ["name", "is_active"];
+    const isValidUpdates = updates.every((update) =>
+      allowedUpdates.includes(update)
+    );
+    if (!isValidUpdates) {
+      reject({
+        message: "not a valid operation",
+        status: 400,
+      });
+    }
+
+    const [customer] = CUSTOMER.filter((p) => id === p.id);
+    updates.forEach((update) => (customer[update] = newCustomer[update]));
+    helper.writeJSONFile(filename, CUSTOMER);
+    resolve(customer);
   });
 }
 
 function deleteCustomer(id) {
+  console.log("iii", id);
   return new Promise((resolve, reject) => {
-    helper
-      .mustBeInArray(customer, id)
-      .then(() => {
-        customers = customer.filter((p) => p.id !== id);
-        helper.writeJSONFile(filename, customers);
-        resolve();
-      })
-      .catch((err) => reject(err));
+    /** Soft deletes the person with is_deleted:true flag,
+     * In production, deleted data can be removed by invoking a seperate delete fucntion
+     * after certain interval of time
+     */
+    const customers = CUSTOMER.map((c) =>
+      id === c.id ? { ...c, is_active: false } : c
+    );
+    console.log("cccc", customers);
+    helper.writeJSONFile(filename, customers);
+    resolve();
   });
 }
 

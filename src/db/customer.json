@@ -8,13 +8,34 @@
     {
         "id": 3,
         "uuid": "00e69238-6236-4ed6-9c92-0b24e9c669b5",
-        "name": "test update 3",
+        "name": "test update 333333",
         "is_active": false
     },
     {
         "id": 4,
         "uuid": "c3f34f78-5cf4-45d4-b573-b9bf23f969e0",
         "name": "test update 444",
+        "is_active": false
+    },
+    {
+        "id": 5,
+        "name": "again customer",
+        "is_active": true
+    },
+    {
+        "id": 6,
+        "name": "again customer with id ",
+        "is_active": true
+    },
+    {
+        "id": 7,
+        "name": "again customer with id ",
+        "is_active": true
+    },
+    {
+        "id": 8,
+        "uuid": "448e30f7-5ea3-4211-8936-c36eee253f1d",
+        "name": "again customer with id ",
         "is_active": false
     }
 ]

@@ -13,13 +13,21 @@
         "first_name": "chiran",
         "last_name": "chaps",
         "role": "CTO",
-        "is_deleted": false
+        "is_deleted": true
     },
     {
         "id": 3,
         "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
         "first_name": "Cool guy",
         "last_name": "kdfj",
+        "role": "CFO",
+        "is_deleted": true
+    },
+    {
+        "id": 4,
+        "customer_id": "d13ff356-f588-4792-ae5c-a00b4b014041",
+        "first_name": "update id five5",
+        "last_name": "this is update",
         "role": "CFO",
         "is_deleted": true
     }
