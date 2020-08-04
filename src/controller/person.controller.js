@@ -4,7 +4,6 @@ const person = require("../model/person.model");
 
 /* Insert a new customer */
 router.post("/persons", async (req, res) => {
-  console.log("reqqqq", req.body);
   await person
     .insertPerson(req.body)
     .then((person) =>
@@ -19,7 +18,6 @@ router.post("/persons", async (req, res) => {
 /* All persons */
 router.get("/:customerId/persons", async (req, res) => {
   const { customerId } = req.params;
-  console.log("persons", req.params);
   await person
     .getPersons(customerId)
     .then((person) => res.json(person))
@@ -71,7 +69,6 @@ router.put("/persons/:id", async (req, res) => {
 /* Delete a person */
 router.delete("/persons/:id", async (req, res) => {
   const id = Number(req.params.id);
-  console.log("iiiidddele", id, person.deletePerson);
   await person
     .deletePerson(id)
     .then((p) =>

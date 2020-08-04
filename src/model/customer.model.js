@@ -71,7 +71,6 @@ function updateCustomer(id, newCustomer) {
 }
 
 function deleteCustomer(id) {
-  console.log("iii", id);
   return new Promise((resolve, reject) => {
     /** Soft deletes the person with is_deleted:true flag,
      * In production, deleted data can be removed by invoking a seperate delete fucntion
@@ -80,7 +79,6 @@ function deleteCustomer(id) {
     const customers = CUSTOMER.map((c) =>
       id === c.id ? { ...c, is_active: false } : c
     );
-    console.log("cccc", customers);
     helper.writeJSONFile(filename, customers);
     resolve();
   });

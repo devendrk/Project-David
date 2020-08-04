@@ -4,12 +4,11 @@ const customer = require("../model/customer.model");
 
 /* Insert a new customer */
 router.post("/customers", async (req, res) => {
-  console.log("reqqqq", req.body);
   await customer
     .insertCustomer(req.body)
     .then((customer) =>
       res.status(201).json({
-        message: `The person #${customer.id} has been created`,
+        message: `The customer #${customer.id} has been created`,
         content: customer,
       })
     )
@@ -18,7 +17,6 @@ router.post("/customers", async (req, res) => {
 
 /* All customers */
 router.get("/customers", async (req, res) => {
-  console.log("ccc", customer);
   await customer
     .getCustomers()
     .then((customer) => res.json(customer))
@@ -50,7 +48,6 @@ router.get("/customers/:id", async (req, res) => {
 router.put("/customers/:id", async (req, res) => {
   const id = Number(req.params.id);
   const body = req.body;
-  console.log(id, body);
   await customer
     .updateCustomer(id, body)
     .then((customer) =>

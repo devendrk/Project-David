@@ -31,19 +31,18 @@ function getPerson(id) {
 function insertPerson(body) {
   const { first_name, last_name, customer_id, role } = body;
   return new Promise((resolve, reject) => {
-    if (!(first_name || last_name || customer_id, role)) {
+    if (!(first_name || last_name || customer_id || role)) {
       reject({
         message: "Required field missing",
         status: 400,
       });
     }
-    const id = { id: helper.getNewId(PERSON) };
     const newPerson = {
-      ...id,
-      customer_id,
+      id: helper.getNewId(PERSON),
+      customer_id: customer_id,
       first_name: first_name,
-      last_name,
-      role,
+      last_name: last_name,
+      role: role,
       is_deleted: false,
     };
     PERSON.push(newPerson);
