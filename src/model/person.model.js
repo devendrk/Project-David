@@ -54,7 +54,6 @@ function insertPerson(body) {
 function updatePerson(id, newPerson) {
   return new Promise((resolve, reject) => {
     const updates = Object.keys(newPerson);
-    console.log("modee", newPerson);
     const allowedUpdates = ["first_name", "last_name", "role", "is_deleted"];
     const isValidUpdates = updates.every((update) =>
       allowedUpdates.includes(update)
@@ -83,7 +82,6 @@ function deletePerson(id) {
     const persons = PERSON.map((person) =>
       id === person.id ? { ...person, is_deleted: true } : person
     );
-    console.log("after delete", persons);
     helper.writeJSONFile(filename, persons);
     resolve();
   });
