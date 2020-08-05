@@ -20,7 +20,6 @@ router.post("/customers/:customerId/persons", async (req, res) => {
 /* All persons */
 router.get("/customers/:customerId/persons", async (req, res) => {
   const { customerId } = req.params;
-  console.log("rrr..", customerId);
   await person
     .getPersons(customerId)
     .then((person) => res.json(person))

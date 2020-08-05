@@ -1,50 +1,18 @@
 [
     {
         "id": 1,
-        "customer_id": 1,
+        "customer_id": 2,
         "first_name": "Updated Ranendra",
         "last_name": "Updated Adhi",
         "role": "CFO",
-        "is_deleted": false
+        "is_deleted": true
     },
     {
         "id": 2,
-        "customer_id": 1,
-        "first_name": "RanDai",
-        "last_name": "AAd",
-        "role": "CTO",
-        "is_deleted": false
-    },
-    {
-        "id": 3,
         "customer_id": 2,
-        "first_name": "RanDai",
-        "last_name": "AAd",
-        "role": "CTO",
-        "is_deleted": false
-    },
-    {
-        "id": 4,
-        "customer_id": 2,
-        "first_name": "RanDai",
-        "last_name": "AAd",
-        "role": "CTO",
-        "is_deleted": false
-    },
-    {
-        "id": 5,
-        "customer_id": 2,
-        "first_name": "RanDai",
-        "last_name": "AAd",
-        "role": "CTO",
-        "is_deleted": false
-    },
-    {
-        "id": 6,
-        "customer_id": 2,
-        "first_name": "RanDai",
-        "last_name": "AAd",
-        "role": "CTO",
+        "first_name": "Updated JHon",
+        "last_name": "Updated Adhi",
+        "role": "CFO",
         "is_deleted": false
     }
 ]

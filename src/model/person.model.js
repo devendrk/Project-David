@@ -100,10 +100,7 @@ function updatePerson(customerId, id, newPerson) {
       });
     }
 
-    const person = PERSON.find(
-      (p) => console.log("iidd", id, "p.id", p.id) || id == p.id
-    );
-    console.log("person", person);
+    const person = PERSON.find((p) => id == p.id);
     if (!person) {
       reject({
         message: "Id is invalid",

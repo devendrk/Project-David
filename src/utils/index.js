@@ -1,5 +1,6 @@
 const fs = require("fs");
 
+/** In production uuid is automatically genereted */
 const uuidGenerator = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,
@@ -8,6 +9,7 @@ const uuidGenerator = () => {
   });
 };
 
+/** In Production id is generated automatically */
 const getNewId = (array) => {
   if (array.length > 0) {
     return array[array.length - 1].id + 1;

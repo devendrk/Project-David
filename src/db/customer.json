@@ -3,12 +3,12 @@
         "id": 1,
         "uuid": "206c3fbf-01cf-4351-b71e-f781d35614c0",
         "name": "customer 1 ",
-        "is_active": true
+        "is_active": false
     },
     {
         "id": 2,
-        "uuid": "b7cfcbe8-ec07-4ae0-84a1-6290f5587fe1",
-        "name": "update two",
-        "is_active": false
+        "uuid": "330a2b70-8ca5-49a5-b831-1c3c0fd3ac30",
+        "name": "update customer twooo",
+        "is_active": true
     }
 ]
